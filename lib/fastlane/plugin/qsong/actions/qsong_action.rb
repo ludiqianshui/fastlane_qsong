@@ -7,13 +7,12 @@ module Fastlane
       def self.run(params)
         UI.message("The qsong plugin is working!")
         UI.message("change a name of file!")
-        old_file_absolute_path = File.expand_path(params[:path_to_old_file])
-        new_name = "qsong"
-        UI.message("print old file name: '#{new_name}'")
-        old_file_path = File.dirname(old_file_absolute_path)
-        old_file_name = File.basename(old_file_absolute_path)
-        UI.message("print old file name: '#{old_file_name}'")
-        File.rename(old_file_absolute_path, "#{new_file_path}/#{old_file_name}")
+#        old_file_absolute_path = File.expand_path(params[:path_to_old_file])
+#        UI.message("print old file name: '#{new_name}'")
+#        old_file_path = File.dirname(old_file_absolute_path)
+#        old_file_name = File.basename(old_file_absolute_path)
+#        UI.message("print old file name: '#{old_file_name}'")
+#        File.rename(old_file_absolute_path, "#{new_file_path}/#{old_file_name}")
 
         UI.message("thanks Dunya!")
       end
