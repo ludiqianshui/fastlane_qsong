@@ -7,12 +7,13 @@ module Fastlane
       def self.run(params)
         UI.message("The qsong plugin is working!")
         UI.message("change a name of file!")
-#        old_file_absolute_path = File.expand_path(params[:path_to_old_file])
-#        UI.message("print old file name: '#{new_name}'")
-#        old_file_path = File.dirname(old_file_absolute_path)
-#        old_file_name = File.basename(old_file_absolute_path)
-#        UI.message("print old file name: '#{old_file_name}'")
-#        File.rename(old_file_absolute_path, "#{new_file_path}/#{old_file_name}")
+        old_file_absolute_path = File.expand_path(params[:path_to_old_file])
+        new_name = params[:new_name]
+        UI.message("print new file name: '#{new_name}'")
+        old_file_path = File.dirname(old_file_absolute_path)
+        old_file_name = File.basename(old_file_absolute_path)
+        UI.message("print old file name: '#{old_file_name}'")
+        File.rename(old_file_absolute_path, "#{new_name}")
 
         UI.message("thanks Dunya!")
       end
@@ -35,13 +36,25 @@ module Fastlane
       end
 
       def self.available_options
-        [
+
           # FastlaneCore::ConfigItem.new(key: :your_option,
           #                         env_name: "QSONG_YOUR_OPTION",
           #                      description: "A description of your option",
           #                         optional: false,
           #                             type: String)
-        ]
+
+        [
+                    FastlaneCore::ConfigItem.new(key: :path_to_old_file,
+                        env_name: "PATH_TO_OLD_FILE",
+                        description: "The location of old file",
+                        optional: false,
+                    type: String),
+                    FastlaneCore::ConfigItem.new(key: :new_name,
+                        env_name: "PATH_TO_NEW_FILE",
+                        description: "new name file",
+                        optional: false,
+                    type: String)
+                ]
       end
 
       def self.is_supported?(platform)
